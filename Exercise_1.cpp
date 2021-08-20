@@ -1,3 +1,9 @@
+  
+// Time Complexity : O(N)
+// Space Complexity : O(N)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : No
+
 #include <stdio.h> 
   
 // A recursive binary search function. It returns 
@@ -5,7 +11,17 @@
 // otherwise -1 
 int binarySearch(int arr[], int l, int r, int x) 
 {   
-    //Your Code here 
+    if (arr == NULL) return -1;
+    if (l <= r)
+    {
+        int mid = l + (r - l)/2;
+        if(arr[mid] == x) return mid;
+        else{
+            if(arr[mid] > x) return binarySearch(arr, l, mid - 1, x);
+            return binarySearch(arr, mid + 1, r, x);
+        }
+    }
+    return -1;
 } 
   
 int main(void) 
